@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=360, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>My App</title>
+
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="styles/onsen-css-components.css">
+<link rel="stylesheet" href="styles/app.css">
+<link rel="stylesheet" href="css/font/font.css">
+
+<link rel="stylesheet" type="text/css" href="slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+
+<link rel="stylesheet" type="text/css" href="nouislider/nouislider.min.css">
+<link rel="stylesheet" type="text/css" href="nouislider/nouislider.pips.css">
+<link rel="stylesheet" type="text/css" href="nouislider/nouislider.tooltips.css">
+
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/uistyle.css">
+
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/angular/angular-touch.min.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+
+<script type="text/javascript" src="slick/slick.js"></script>
+
+<script src="js/svg.min.js"></script>
+<script src="js/svg.draggable.min.js">
+</script>
+<script src="nouislider/nouislider.min.js">
+</script>
+<script src="js/score_main.js">
+</script>
+<script src="js/gameConfCTRL.js">
+</script>
+<script src="js/storageCTRL.js">
+</script>
+
+<script src="js/easeljs-0.8.1.min.js"></script>
+<script src="js/tweenjs-0.5.0.min.js"></script>
+<script src="js/movieclip-0.7.0.min.js"></script>
+<script src="js/preloadjs-0.4.0.min.js"></script>
+<script src="js/about.js"></script>
+
+<script src="js/toaster.js"></script>
+<script src="js/util.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+<script type="text/javascript" src="js/monaca.viewport.js"></script>
+<script type="text/javascript" src="js/ng-main.js"></script>
+
+<script src="cordova.js"></script>
+
+<style>
+.page--menu-page__background {
+background-color: #000;
+}
+
+.page--menu-page__content {
+color: white;
+}
+
+.menu-close,
+.menu-close > .toolbar-button {
+color: #999;
+}
+
+.menu-list,
+.menu-item:first-child,
+.menu-item:last-child,
+.menu-item {
+background-color: transparent;
+background-image: none !important;
+border-color: transparent;
+color: #fff;
+}
+
+.menu-item {
+padding: 0 0 0 20px;
+line-height: 52px;
+height: 52px;
+text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+}
+
+.menu-item:active {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-notification {
+display: inline-block;
+margin-top: 12px;
+font-size: 14px;
+height: 16px;
+line-height: 16px;
+min-width: 16px;
+font-weight: 600;
+}
+
+.bottom-menu-list,
+.bottom-menu-item:first-child,
+.bottom-menu-item:last-child,
+.bottom-menu-item {
+border-color: #393939;
+background-color: transparent;
+background-image: none !important;
+color: #ccc;
+}
+
+.bottom-menu-item:active {
+background-color: rgba(255, 255, 255, 0.1);
+}
+</style>
+
+</head>
+
+<body ng-controller="globalCtrl">
+
+<ons-sliding-menu menu-page="menu.html" main-page="blank.html" side="left" var="menu" type="reveal" max-slide-distance="260px" swipeable="false">
+</ons-sliding-menu>
+<ons-template id="blank.html">
+<ons-navigator var="myNavi" ng-controller="naviCtrl">
+<ons-page>
+<!--<div id="splash">
+</div>-->
+</ons-page>
+</ons-navigator>
+</ons-template>
+
+<ons-template id="menu.html">
+<ons-page modifier="menu-page" ng-controller="menuCtrl">
+<ons-list class="menu-list">
+<ons-list-item class="menu-item" ng-click="setPage('page1.html')">
+<ons-icon icon="fa-book" fixed-width="true"></ons-icon>
+Score Book
+</ons-list-item>
+
+
+<ons-list-item class="menu-item" ng-click="setPage('page3.html')">
+<ons-icon icon="ion-gear-b" fixed-width="true"></ons-icon>
+User Settings
+</ons-list-item>
+
+<ons-list-item class="menu-item" ng-click="setPage('about.html')">
+<ons-icon icon="ion-android-desktop" fixed-width="true">
+</ons-icon>
+About this App
+</ons-list-item>
+</ons-list>
+</ons-page>
+</ons-template>
+
+<!--game scoreloglist-->
+<ons-template id="page1.html">
+<ons-page id="listview" ng-controller="listCtrl" var="listCtrl">
+<ons-toolbar class="navigation-bar">
+<div class="left">
+<ons-toolbar-button ng-click="menu.toggleMenu()">
+<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+
+<div class="right">
+<ons-toolbar-button ng-click="showGameConf()">
+<ons-icon icon="ion-plus" size="22px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">Score Book</div>
+</ons-toolbar>
+
+<ons-row style="text-align: center;">
+<ons-col>
+<ons-list id="loglist" class="baselist dashedlist">
+<ons-list-item>
+<div style="margin: 0 auto;width:260px;line-height: 1.1em;text-align: center;padding: 10px 0;" ng-style="(data.logList.length>0)?{color:'#505050'}:{color:'#fff'}">
+Please tap the "
+<ons-icon icon="ion-plus" size="22px"></ons-icon> "
+<br>To add a new score card.
+</div>
+</ons-list-item>
+<ons-list-item style="text-align:center" ng-repeat="t in data.logList" ng-click="standbyLoginfo()" class="list__item--tappable list__item__line-height" modifier="chevron">
+<div class="list_inner">
+<ons-row style="padding-right:20px">
+<ons-col>
+<div style="max-height:40px;min-height: 40px;overflow: hidden;font-size:19px">
+{{t.title}}
+</div>
+</ons-col>
+</ons-row>
+<ons-col>
+<span style="font-size:14px">{{t.timecode}}</span>
+<ons-row>
+</ons-row>
+</div>
+</ons-list-item>
+</ons-list>
+<p>
+</p>
+</ons-col>
+</ons-row>
+</ons-page>
+</ons-template>
+
+
+<ons-template id="loginfo.html">
+<ons-page var="loginfo" ng-controller="loginfoCtrl" ng-swipe-right="myNavi.popPage()" ng-swipe-left="rescore()">
+
+<ons-toolbar>
+<div class="left">
+<ons-toolbar-button ng-click="myNavi.popPage()">
+<ons-icon icon="ion-ios-arrow-back" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">
+Game data
+</div>
+<div class="right">
+<ons-toolbar-button ng-click="delete()">
+<ons-icon icon="ion-trash-b" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+</ons-toolbar>
+
+<ons-row>
+<ons-col>
+<ons-list id="game_detail" class="baselist">
+<ons-list-header>
+Game Title
+</ons-list-header>
+<ons-list-item>
+<div class="list_inner">
+<input type="text" class="text-input text-input--transparent textbox_standard" ng-focus="editGameTitle()" ng-blur="gameTitleUpDate()" ng-model="param.gameTitle" ng-maxlength="20" maxlength="20">
+</div>
+</ons-list-item>
+<ons-list-header>
+Game memo
+</ons-list-header>
+<ons-list-item>
+<div class="list_inner">
+    <textarea ng-readonly="canMemoEdit==false" ng-class="memoClass" ng-model="param.memo" class="textarea textarea--transparent">
+    </textarea>
+</div>
+</ons-list-item>
+<ons-list-header>
+Edit
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height edit_btn" modifier="chevron" ng-click="rescore()"> 編集
+</ons-list-item>
+<ons-list-header>
+Game detail
+</ons-list-header>
+<section class="dashedlist">
+<ons-list-item ng-repeat="p in listParam">
+<ons-row>
+<ons-col width="110px" class="label">
+{{p.title}}
+</ons-col>
+<ons-col class="list_righter">
+<ons-col class="list_righter">
+<div class="list_inner">
+{{p.data}}
+</div>
+</ons-col>
+</ons-col>
+</ons-row>
+</ons-list-item>
+</section>
+
+</ons-list>
+</ons-col>
+</ons-row>
+</ons-page>
+</ons-template>
+
+<ons-template id="gameconfig.html">
+<ons-page ng-controller="gameconfigCtrl">
+<ons-toolbar>
+<div class="left">
+<ons-toolbar-button ng-click="myNavi.popPage()">
+<ons-icon icon="ion-ios-arrow-back" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">
+Add Score Card
+</div>
+</ons-toolbar>
+<ons-row>
+<ons-col>
+<ons-list id="gameconfigList" class="baselist">
+<ons-list-header>
+Game Title
+</ons-list-header>
+<ons-list-item>
+<input placeholder="試合名等" class="text-input" ng-model="conf.gameTitle" ng-maxlength="20" maxlength="20">
+</ons-list-item>
+
+<ons-list-header>
+Bow
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="showDialog('userbows.html')">
+{{(conf.bow)?conf.bow.bowname:'使用する弓'}}
+</ons-list-item>
+<ons-list-header>
+Arrow
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="showDialog('userarrows.html')">
+{{(conf.arrow)?conf.arrow.arrowname:'使用する矢'}}
+</ons-list-item>
+    
+<ons-list-header>
+Game event
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="setGameType()">
+{{(conf.gametype)?conf.gametype.title:'競技種別'}}
+</ons-list-item>
+<ons-list-header>
+Bow type
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="setBowType()">
+{{(conf.bowtype)?data.bowObj[conf.bowtype].title:'弓具種別'}}
+</ons-list-item>
+<ons-list-header>
+Target type
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="setTargetType()">
+{{(conf.targettype)?conf.targettype.title:'的種別'}}
+</ons-list-item>
+<ons-list-header ng-show="conf.gametype.canSelectX">
+Enable X
+</ons-list-header>
+<ons-list-item ng-show="conf.gametype.canSelectX">
+{{conf.enableX?'X有効':'X無効'}}
+<ons-switch modifier="list-item" var="enableX"></ons-switch>
+</ons-list-item>
+<ons-list-header ng-show="(conf.targettype.canSelectShaft&&conf.gametype.stage=='Indoor')">
+Shaft hole
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" ng-click="setArrowType()"  ng-show="(conf.targettype.canSelectShaft&&conf.gametype.stage=='Indoor')">
+{{(conf.shaft)?getArrowType():'矢の太さ'}}
+</ons-list-item>
+<ons-list-header>
+Target No
+</ons-list-header>
+<ons-list-item>
+<input placeholder="立ち位置" id="standposition" class="text-input" ng-model="conf.standposition" ng-maxlangth="3" maxlength="3">
+</ons-list-item>
+<ons-list-header>
+Memo
+</ons-list-header>
+<ons-list-item>
+<textarea class="textarea" id="my-textarea" ng-model="conf.memo"></textarea>
+</ons-list-item>
+
+<ons-list-header>
+Entry
+</ons-list-header>
+<ons-list-item class="list__item--tappable list__item__line-height edit_btn" modifier="chevron" ng-click="entry()"> 作成
+</ons-list-item>
+
+<ons-list-item class="blank">
+</ons-list-item>
+</ons-list>
+</ons-col>
+</ons-row>
+</ons-page>
+</ons-template>
+
+<ons-template id="userbows.html">
+<ons-dialog modifier="material" cancelable class="">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('userbows.html')">
+            Close
+        </div>
+        <div class="center">
+            Choose bow</div>
+    </ons-toolbar>
+                <ons-list-item modifier="tappable" ng-click="setParam('bow',bows,'userbows.html')" ng-repeat="bows in user.bows">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.bow.bowname==bows.bowname)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col>
+                        {{bows.bowname}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </ons-dialog>
+</ons-template>
+    
+<ons-template id="userarrows.html">
+<ons-dialog modifier="material" cancelable class="">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('userarrows.html')">
+            Close
+        </div>
+        <div class="center">
+            Choose Arrow</div>
+    </ons-toolbar>
+                <ons-list-item modifier="tappable" ng-click="setParam('arrow',arrows,'userarrows.html')" ng-repeat="arrows in user.arrows">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.arrow.arrowname==arrows.arrowname)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col>
+                        {{arrows.arrowname}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </ons-dialog>
+</ons-template>
+    
+<ons-template id="gamelist.html">
+<ons-dialog modifier="material" cancelable class="gamelist-dialog">
+    <div class="dialoglist_wrapper">
+  <ons-tabbar>
+  <ons-tab page="gamelist-all.html" label="All" active="true"></ons-tab>
+  <ons-tab page="gamelist-favorite.html" label="Favorite"></ons-tab>
+  <ons-tab page="gamelist-outdoor.html" label="Outdoor"></ons-tab>
+  <ons-tab page="gamelist-indoor.html" label="Indoor"></ons-tab>
+</ons-tabbar></div>
+    </ons-dialog>
+</ons-template>
+    
+<ons-template id="gamelist-all.html">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('gamelist.html')">
+            Close
+        </div>
+        <div class="center">
+            Game events</div>
+    </ons-toolbar>
+    <div class="dialoglist_wrapper">
+        <ons-list class="selecterdialog">
+            <ons-list-item modifier="tappable" ng-click="setParam('gametype',data.eventsObj[event],'gamelist.html')" ng-repeat="event in data.events">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.gametype.value==event)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col>
+                        {{data.eventsObj[event].title}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-template>
+    
+<ons-template id="gamelist-favorite.html">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('gamelist.html')">
+            Close
+        </div>
+        <div class="center">
+            Game events</div>
+    </ons-toolbar>
+    <div class="dialoglist_wrapper">
+        <ons-list class="selecterdialog">
+            <ons-list-item modifier="tappable" ng-click="setParam('gametype',data.eventsObj[event],'gamelist.html')" ng-repeat="event in data.favoriteEvents">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.gametype.value==event)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col>
+                        {{data.eventsObj[event].title}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-template>
+<ons-template id="gamelist-outdoor.html">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('gamelist.html')">
+            Close
+        </div>
+        <div class="center">
+            Game events</div>
+    </ons-toolbar>
+    <div class="dialoglist_wrapper">
+        <ons-list class="selecterdialog">
+            <ons-list-item modifier="tappable" ng-click="setParam('gametype',data.eventsObj[event],'gamelist.html')" ng-repeat="event in data.outdoorEvents">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.gametype.value==event)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col>
+                        {{data.eventsObj[event].title}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-template>
+<ons-template id="gamelist-indoor.html">
+    <ons-toolbar inline>
+        <div class="left" ng-click="hideDialog('gamelist.html')">
+            Close
+        </div>
+        <div class="center">
+            Game events</div>
+    </ons-toolbar>
+    <div class="dialoglist_wrapper">
+        <ons-list class="selecterdialog">
+            <ons-list-item modifier="tappable" ng-click="setParam('gametype',data.eventsObj[event],'gamelist.html')" ng-repeat="event in data.indoorEvents">
+                <ons-row>
+                    <ons-col width="35px" class="checkbox">
+                        <ons-icon icon="{{(conf.gametype.value==event)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                        </ons-icon>
+                    </ons-col>
+                    <ons-col> {{data.eventsObj[event].title}}
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-template>
+
+<ons-template id="bowlist.html">
+<ons-dialog cancelable>
+<ons-toolbar inline>
+<div class="left" ng-click="hideDialog('bowlist.html')">
+Close
+</div>
+<div class="center">
+Bow type</div>
+</ons-toolbar>
+<ons-list>
+<ons-list-item modifier="tappable" ng-click="setParam('bowtype',bow.value,'bowlist.html')" ng-repeat="bow in data.bowObj">
+<ons-row>
+<ons-col width="60px" class="checkbox">
+<ons-icon icon="{{(conf.bowtype==bow.value)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+</ons-icon>
+</ons-col>
+<ons-col>
+{{bow.title}}
+</ons-col>
+</ons-row>
+</ons-list-item>
+</ons-list>
+</ons-dialog>
+</ons-template>
+
+
+<ons-template id="targetlist.html">
+<ons-dialog cancelable>
+<ons-toolbar inline>
+<div class="left" ng-click="hideDialog('targetlist.html')">
+Close
+</div>
+<div class="center">
+Target type</div>
+</ons-toolbar>
+<ons-list>
+<ons-list-item modifier="tappable" ng-click="setParam('targettype',data.targetFaceObj[targetFace],'targetlist.html')" ng-repeat="targetFace in data.targetFaces">
+<ons-row>
+<ons-col width="60px" class="checkbox">
+<ons-icon icon="{{(conf.targettype.value==targetFace)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+</ons-icon>
+</ons-col>
+<ons-col>
+{{data.targetFaceObj[targetFace].title}}
+</ons-col>
+</ons-row>
+</ons-list-item>
+</ons-list>
+</ons-dialog>
+</ons-template>
+
+
+<ons-template id="arrowlist.html">
+<ons-dialog cancelable>
+<ons-toolbar inline>
+<div class="left" ng-click="hideDialog('bowlist.html')">
+Close
+</div>
+<div class="center">
+Bow type</div>
+</ons-toolbar>
+<ons-list>
+<ons-list-item modifier="tappable" ng-click="setParam('shaft','Narrow','arrowlist.html')">
+<ons-row>
+<ons-col width="60px" class="checkbox">
+<ons-icon icon="{{(conf.shaft=='Narrow')?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+</ons-icon>
+</ons-col>
+<ons-col>
+ナローシャフト
+</ons-col>
+</ons-row>
+</ons-list-item>
+<ons-list-item modifier="tappable" ng-click="setParam('shaft','Fat','arrowlist.html')">
+<ons-row>
+<ons-col width="60px" class="checkbox">
+<ons-icon icon="{{(conf.shaft=='Fat')?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+</ons-icon>
+</ons-col>
+<ons-col>
+ファットシャフト
+</ons-col>
+</ons-row>
+</ons-list-item>
+</ons-list>
+</ons-dialog>
+</ons-template>
+
+<ons-template id="page2.html">
+<ons-page ng-controller="scoreCtrl" var="scoreCtrlPage">
+<ons-toolbar>
+<div class="left">
+<ons-toolbar-button ng-click="myNavi.popPage()">
+<ons-icon icon="ion-ios-arrow-back" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+
+
+<div class="right">
+<ons-toolbar-button ng-click="myNavi.resetToPage('page1.html',{animation:'slide'});">
+<ons-icon icon="ion-chevron-up" size="20px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+
+<div class="center" id="header_info">
+</div>
+</ons-toolbar>
+
+
+<ons-row style="margin-top: 0;width:100%;height:100%">
+<ons-col class="score_wrapper">
+<ons-carousel style="width:100%;height:100%" overscrollable auto-scroll id="score_carousel" var="carousel" direction="vertical">
+<ons-carousel-item style="width:100%;height:100%;overflow:hidden">
+<!--page1-->
+<div id="scorenote_wrapper">
+<div id="endlist">
+
+</div>
+</div>
+
+
+<div id="scorelist_footer">
+<div class="x109">
+X: 10: 9:
+</div>
+<div class="totalscoreBox">
+Total
+<span class="totalscore">
+1400</span>
+</div>
+</div>
+</ons-carousel-item>
+<ons-carousel-item style="width:100%;height:100%">
+<!--page2-->
+<div id="scorebook_body">
+<div id="scorebox">
+<div id="score_line">
+<div class="score_line_table">
+<div class="table_hr">
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+<div>&nbsp;
+</div>
+</div>
+</div>
+</div>
+<div id="score_lock_wrapper">
+<div>
+<a href="javascript:void(0)" class="button effeckt-button unelock elock" id="endLock">
+Elock
+</a>
+</div>
+<div>
+<a href="javascript:void(0)" class="button effeckt-button" id="direct_targetface">
+
+</a>
+</div>
+</div>
+<div id="score_pad_wrapper">
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">1</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">2</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">3</a>
+</div>
+</div>
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">4</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">5</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">6</a>
+</div>
+</div>
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">7</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">8</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">9</a>
+</div>
+</div>
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">10</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">X</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button">M</a>
+</div>
+</div>
+</div>
+<div id="scorebox_ui_wrapper">
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button lower_button" id="box_clear">C</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button" id="end_confirm">
+<svg width="70" height="70" xmlns="http://www.w3.org/2000/svg" style="zoom:0.5;padding-top: 30px;">
+<g>
+<ellipse ry="28" rx="28" id="svg_1" cy="35" cx="35" stroke-width="15" stroke="#e84343" fill="none" />
+</g>
+</svg>
+</a>
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button lower_button" id="show_scorecard">
+<svg width="70" height="70" xmlns="http://www.w3.org/2000/svg" style="zoom:0.5;padding-top: 30px;">
+<g>
+<line id="svg__1" y2="15" x2="64.03845" y1="15" x1="21" stroke-width="12" stroke="#fff" fill="none" />
+<line id="svg_2" y2="34" x2="64.03845" y1="34" x1="21" stroke-width="12" stroke="#fff" fill="none" />
+<line id="svg_3" y2="54" x2="64.03845" y1="54" x1="21" stroke-width="12" stroke="#fff" fill="none" />
+<line id="svg_4" y2="15" x2="17" y1="15" x1="6" stroke-width="12" stroke="#fff" fill="none" />
+<line id="svg_5" y2="34" x2="17" y1="34" x1="6" stroke-width="12" stroke="#fff" fill="none" />
+<line id="svg_6" y2="54" x2="17" y1="54" x1="6" stroke-width="12" stroke="#fff" fill="none" />
+</g>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div id="target_face">
+<div id="target_wrapper">
+<div id="target_svg">
+<div id="target_background">
+</div>
+</div>
+</div>
+<div id="target_ui_wrapper">
+<div class="table_hr">
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button lower_button" id="face_lock">
+<ons-icon icon="ion-locked" size="35px" fixed-width="true"></ons-icon>
+</a>
+</div>
+<div class="table_hd" style="position:relative;overflow:hidden;">
+<a href="javascript:void(0)" class="button effeckt-button" id="take_photo">
+<ons-icon icon="ion-camera" size="37px" fixed-width="true">
+</ons-icon>
+</a>
+
+<input type="file" accept="image/*;capture=camera" id="cameraimage" style="
+position: absolute;
+left: 0;
+top: 0;
+opacity: 0;
+zoom: 4;">
+</div>
+<div class="table_hd">
+<a href="javascript:void(0)" class="button effeckt-button lower_button" id="face_close">
+
+<ons-icon icon="ion-android-close" size="35px" fixed-width="true">
+</ons-icon>
+</a>
+</div>
+</div>
+<div id="target_overlay_ui_wrapper" style="display:none;">
+
+<div id="target_overlay_ui_base">
+<div style="
+color: #fff;
+font-size: 14px;
+padding: 8px;
+background: -webkit-linear-gradient(left, rgba(0,0,0,0.29) 0%,rgba(0,0,0,0.82) 37%,rgba(0,0,0,0.8) 61%,rgba(0,0,0,0.29) 100%);
+background: linear-gradient(to right, rgba(0,0,0,0.29) 0%,rgba(0,0,0,0.82) 37%,rgba(0,0,0,0.8) 61%,rgba(0,0,0,0.29) 100%);
+margin: 0 0 20px;">Setting</div>
+<a href="javascript:void(0)" class="button effeckt-button" id="target_overlay_clear" ng-click="removeTargetPic()">
+Clear
+</ons-icon>
+</a>
+<div style="
+margin: 20px 0;
+/* width: 200px; */
+background-color: rgb(12, 12, 12);
+padding: 10px 5px;
+display: inline-block;
+border-radius: 5px;">
+<input type="range" class="range" ng-model="opacity_range" ng-change="setOpacity2target()" style="width:200px">
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div id="magnify">
+<div id="magnitarget"></div>
+<div id="magnicross">
+<svg xmlms="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<line x1="0" y1="50%" x2="100%" y2="50%" style="stroke:rgb(100, 100, 100);stroke-width:1"></line>
+<line x1="50%" y1="0" x2="50%" y2="100%" style="stroke:rgb(100,100,100);stroke-width:1"></line>
+</svg>
+</div>
+<div id="magnum">
+</div>
+</div>
+</div>
+<div id="reference_photo">
+
+</div>
+
+<div id="end_cover">
+<div class="end_inner">
+</div>
+</div>
+
+</ons-carousel-item>
+</ons-carousel>
+</ons-col>
+</ons-row>
+</ons-page>
+</ons-template>
+
+<ons-template id="page3.html">
+<ons-page ng-controller="personalinfoCtrl" var="userinfo">
+<ons-toolbar>
+<div class="left">
+<ons-toolbar-button ng-click="openSlideMenu()">
+<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">Personal Settings</div>
+</ons-toolbar>
+
+
+<ons-row style="text-align: center;">
+<ons-col>
+<form name="userForm" novalidate>
+<ons-list class="baselist dashedlist">
+
+<ons-list-header>
+Your Info
+</ons-list-header>
+    
+<ons-list-item>
+<ons-row>
+<ons-col width="90px">
+<span>Name</span></ons-col>
+<ons-col>
+<input type="text" placeholder="Your name" class="text-input text-input--transparent textbox_standard" style="margin-top: 8px;text-align: right;padding-right: 15px;" ng-model="user.name" required>
+</ons-col>
+</ons-row>
+</ons-list-item>
+
+<ons-list-item>
+<ons-row>
+<ons-col width="90px">
+<span>Gender</span></ons-col>
+<ons-col>
+<div style="float: right; padding-right: 16px;">
+<label class="radio-button">
+<input type="radio" name="gender" value="male" ng-model="user.gender" required>
+<div class="radio-button__checkmark"></div>
+Male
+</label>
+<label class="radio-button">
+<input type="radio" name="gender" value="female" ng-model="user.gender" required>
+<div class="radio-button__checkmark"></div>
+Female
+</label>
+</div>
+</ons-col>
+</ons-row>
+</ons-list-item>
+  
+<ons-list-item class="list__item--tappable list__item__line-height edit_btn" modifier="chevron" ng-click="showDialog('adduserbow.html')"> Add your Bow
+</ons-list-item>
+    
+<ons-list-header>
+Your Bows
+</ons-list-header>  
+<ons-list-item style="text-align:center" class="userEquipments">
+<ons-row ng-repeat = "userbows in user.bows" class="userEquipmentsRow" ng-class="deleteModeBow[$index]" ng-swipe-left="deleteBowSlide($index,true)">
+<ons-col>
+    {{userbows.bowname}}
+</ons-col>
+<ons-col width="50px">
+    {{convertBowInitial(userbows.bowtype)}}
+</ons-col>
+    <div style="
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;" ng-if="deleteModeBow[$index]!=''" ng-click="deleteBowSlide($index,false)"></div>
+    <div class="dellButton">
+    <ons-button modifier="quiet" ng-click="deleteBow($index)"><ons-icon icon="fa-minus" size="20px" style="color:#fff"></ons-icon></ons-button>
+    </div>
+</ons-row>
+</ons-list-item>
+    
+<ons-list-item class="list__item--tappable list__item__line-height edit_btn" modifier="chevron" ng-click="showDialog('adduserarrow.html')"> Add your Arrow
+</ons-list-item>
+<ons-list-header>
+Your Arrows
+</ons-list-header>
+<ons-list-item style="text-align:center" class="userEquipments">
+<ons-row ng-repeat = "userarrows in user.arrows" ng-class="deleteModeArrow[$index]" ng-swipe-left="deleteArrowSlide($index,true)" class="userEquipmentsRow">
+<ons-col width="100%">
+    {{userarrows.arrowname}}
+</ons-col>
+    <div style="
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;" ng-if="deleteModeArrow[$index]!=''" ng-click="deleteArrowSlide($index,false)"></div>
+    <div class="dellButton">
+    <ons-button modifier="quiet" ng-click="deleteArrow($index)"><ons-icon icon="fa-minus" size="20px" style="color:#fff"></ons-icon></ons-button>
+    </div>
+</ons-row>
+</ons-list-item>
+
+
+<ons-list-header>
+GPS
+</ons-list-header>
+<ons-list-item>
+<span>Use GeoLocation</span>
+<ons-switch modifier="list-item" var="geo"></ons-switch>
+</ons-list-item>
+
+<ons-list-header>
+TouchPad
+</ons-list-header>
+<ons-list-item>
+<span>Use FingerGap</span>
+<ons-switch modifier="list-item" var="gap"></ons-switch>
+<div style="margin:10px 0">
+<span>Gap distance</span>
+<div style="float:right">
+<input type="range" class="range" ng-model="user.gap_range" ng-change="console.log(user.gap_range)" ng-disabled="!user.finger_gap">
+</div>
+</div>
+</ons-list-item>
+    
+<ons-list-header>
+OverRay Setting for Verification Image
+</ons-list-header>
+<ons-list-item>
+<span>Opacity of the verification image</span>
+
+<div style="margin:10px 0;text-align:right">
+<input type="range" class="range" ng-model="user.opacity_range" ng-change="console.log(user.trans_range)">
+</div>
+
+<span>When setting hit point</span>
+
+<div style="margin:10px 0;text-align:right">
+<input type="range" class="range" ng-model="user.settingOpacity_range" ng-change="console.log(user.trans_range)">
+</div>
+</ons-list-item>
+</ons-list>
+<ons-button modifier="large" ng-click="setPersonalInfo()" ng-disabled="userForm.$invalid || enchange" style="
+    box-shadow: rgba(0,0,0,0.3) 0px 3px 3px 0px;">
+Save
+</ons-button>
+<div class="content-padded" style="margin:30px auto">
+
+<ons-button modifier="large" ng-click="clearPersonalInfo()" style="margin-top:50px">
+Clear info
+</ons-button>
+</div>
+</form>
+</ons-col>
+</ons-row>
+
+</ons-page>
+</ons-template>
+
+    <!--user bow-->
+<ons-template id="adduserbow.html">
+    <ons-dialog modifier="material" cancelable class="">
+        <ons-toolbar>
+            <div class="center">
+                Add your bows
+            </div>
+        </ons-toolbar>
+        <ons-row style="margin-top:55px">
+            <ons-col>
+                <ons-list id="userbowslist" class="baselist">
+                    <ons-list-header>
+                        Product name
+                    </ons-list-header>
+                    <ons-list-item>
+                        <input placeholder="弓の製品名" class="text-input textbox_standard" ng-model="tmpUserBow.bowname" ng-maxlength="30" maxlength="30" style="
+    width: 100%;
+    margin: 10px auto;
+">
+                    </ons-list-item>
+                    <ons-list-header>
+                        Bow type
+                    </ons-list-header>
+                    <ons-list-item modifier="tappable" ng-click="setBowParam(bow.value)" ng-repeat="bow in data.bowObj">
+                        <ons-row>
+                            <ons-col width="60px" class="checkbox">
+                                <ons-icon icon="{{(tmpUserBow.bowtype==bow.value)?'ion-android-checkmark-circle':'ion-android-radio-button-off'}}" size="24px" fixed-width="false">
+                                </ons-icon>
+                            </ons-col>
+                            <ons-col>
+                                {{bow.title}}
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+                </ons-list>
+            </ons-col>
+        </ons-row>
+        <ons-row>
+            <ons-col>
+                <ons-button modifier="large" ng-click="addBow()">
+                    OK
+                </ons-button>
+            </ons-col>
+        </ons-row>
+    </ons-dialog>
+</ons-template>
+
+    <!--user arrow-->
+<ons-template id="adduserarrow.html">
+    <ons-dialog modifier="material" cancelable class="">
+        <ons-toolbar>
+            <div class="center">
+                Add your arrow
+            </div>
+        </ons-toolbar>
+        <ons-row style="margin-top:55px">
+            <ons-col>
+                <ons-list id="userArrowslist" class="baselist">
+                    <ons-list-header>
+                        Product name
+                    </ons-list-header>
+                    <ons-list-item>
+                        <input placeholder="シャフトの製品名" class="text-input textbox_standard" ng-model="tmpUserArrow.arrowname" ng-maxlength="30" maxlength="30" style="
+    width: 100%;
+    margin: 10px auto;
+">
+                    </ons-list-item>
+                </ons-list>
+            </ons-col>
+        </ons-row>
+        <ons-row>
+            <ons-col>
+                <ons-button modifier="large" ng-click="addArrow()">
+                    OK
+                </ons-button>
+            </ons-col>
+        </ons-row>
+    </ons-dialog>
+</ons-template>
+
+
+<ons-template id="about.html">
+<ons-page ng-controller="aboutCtrl" var="about" id="aboutpage">
+
+<ons-toolbar>
+<div class="left">
+<ons-toolbar-button ng-click="menu.toggleMenu()">
+<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">About this App</div>
+</ons-toolbar>
+<ons-row>
+<ons-col>
+<h2>
+Archers Log<span style="font-size:50%">ver 0.0.2</span></h2>
+<dl>
+<dt>Planning</dt>
+<dd>Masato Arai</dd>
+<dt>UI Design</dt>
+<dd>Masato Arai</dd>
+<dt>Graphic Design
+</dt>
+<dd>Masato Arai</dd>
+<dt>Front-end programing</dt>
+<dd>Masato Arai</dd>
+</dl>
+<div style="width:300px;margin:0 auto;" id="aboutcanvas">
+
+<canvas id="canvas" width="300" height="170"></canvas>
+</div>
+</ons-col>
+</ons-row>
+</ons-page>
+</ons-template>
+
+
+</body>
+
+</html>

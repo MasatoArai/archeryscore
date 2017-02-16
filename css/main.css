@@ -1,0 +1,655 @@
+/* line 36, D:/work/cordovascore/www/css/main.scss */
+html {
+  margin: 0;
+  padding: 0; }
+
+/* line 41, D:/work/cordovascore/www/css/main.scss */
+body {
+  margin: 0;
+  padding: 0; }
+
+/* line 46, D:/work/cordovascore/www/css/main.scss */
+div {
+  margin: 0;
+  padding: 0; }
+
+/* line 51, D:/work/cordovascore/www/css/main.scss */
+ul {
+  margin: 0;
+  padding: 0; }
+
+/* line 56, D:/work/cordovascore/www/css/main.scss */
+li {
+  margin: 0;
+  padding: 0; }
+
+/* line 61, D:/work/cordovascore/www/css/main.scss */
+dl {
+  margin: 0;
+  padding: 0; }
+
+/* line 66, D:/work/cordovascore/www/css/main.scss */
+dt {
+  margin: 0;
+  padding: 0; }
+
+/* line 71, D:/work/cordovascore/www/css/main.scss */
+dd {
+  margin: 0;
+  padding: 0; }
+
+/* line 77, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .slick_item {
+  width: 100%; }
+
+/* line 80, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .roundface {
+  background-color: white;
+  width: 350px;
+  min-height: 350px;
+  position: relative;
+  padding: 0px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 43px; }
+
+/* line 91, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .arrowLayer {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0px; }
+
+/* line 98, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #reference_photo {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000; }
+
+/* line 108, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #end_cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); }
+  /* line 115, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #end_cover .end_inner {
+    position: relative;
+    top: 210px;
+    width: 100%;
+    font-size: 36px;
+    line-height: 45px;
+    color: #fff;
+    text-align: center; }
+
+/* line 125, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorebook_body {
+  height: 100%;
+  overflow: auto; }
+
+/* line 129, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #score_lock_wrapper {
+  width: 360px;
+  height: 45px;
+  margin: 0 auto;
+  display: -webkit-box;
+  @inclued propertySetPrefixVal(display, box); }
+  /* line 135, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #score_lock_wrapper a {
+    height: 40px;
+    line-height: 33px;
+    font-size: 25px; }
+
+/* line 141, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #score_lock_wrapper > div {
+  width: 50%; }
+
+/* line 144, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #score_pad_wrapper {
+  display: table;
+  position: relative;
+  margin: 0 auto;
+  table-layout: fixed;
+  box-sizing: border-box;
+  border-spacing: 3px;
+  border-collapse: separate; }
+
+/* line 154, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .table_hr {
+  display: table-row; }
+
+/* line 157, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .table_hd {
+  display: table-cell;
+  vertical-align: top; }
+
+/* line 161, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #score_line {
+  margin: 5px 0 0; }
+
+/* line 164, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .score_line_table {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  margin: 0 auto;
+  width: 350px;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-collapse: separate; }
+  /* line 174, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel .score_line_table .table_hr {
+    display: table-row;
+    font-size: 10px; }
+    /* line 177, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel .score_line_table .table_hr div {
+      color: #fff;
+      position: relative;
+      display: table-cell;
+      overflow: hidden;
+      padding: 2px 0 0;
+      height: 50px;
+      background-color: #000;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 30px;
+      border-radius: 2px;
+      border: solid 1px #333333;
+      box-sizing: border-box; }
+      /* line 193, D:/work/cordovascore/www/css/main.scss */
+      #score_carousel .score_line_table .table_hr div:nth-of-type(7) {
+        background-color: #c43030; }
+      /* line 196, D:/work/cordovascore/www/css/main.scss */
+      #score_carousel .score_line_table .table_hr div:last-child {
+        width: 74px;
+        background-color: #333333;
+        color: #fff; }
+      /* line 201, D:/work/cordovascore/www/css/main.scss */
+      #score_carousel .score_line_table .table_hr div.select {
+        background-color: #FFF700;
+        color: #333333; }
+      /* line 205, D:/work/cordovascore/www/css/main.scss */
+      #score_carousel .score_line_table .table_hr div.voidcell {
+        background-color: #e8e8e8; }
+        /* line 207, D:/work/cordovascore/www/css/main.scss */
+        #score_carousel .score_line_table .table_hr div.voidcell:before {
+          color: #b4b4b4;
+          content: "--"; }
+      /* line 213, D:/work/cordovascore/www/css/main.scss */
+      #score_carousel .score_line_table .table_hr div.hitloged:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        border-top: 3px #C43030 solid;
+        border-left: 3px #C43030 solid;
+        border-right: 3px transparent solid;
+        border-bottom: 3px transparent solid; }
+    /* line 225, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel .score_line_table .table_hr .endlocked {
+      border-right: 4px #C43030 solid; }
+
+/* line 230, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #navimenu {
+  width: 250px;
+  background-color: #b4b4b4; }
+
+/* line 234, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorelist_log {
+  background-color: #fdf0df;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  transition: left 0.5s cubic-bezier(0.42, 0, 0.1, 0.99);
+  box-sizing: border-box;
+  z-index: 2; }
+
+/* line 248, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorebox_ui_wrapper {
+  display: table;
+  position: relative;
+  margin: 0 auto;
+  table-layout: fixed;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-collapse: separate;
+  width: 350px; }
+  /* line 258, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #scorebox_ui_wrapper .table_hd:last-child {
+    text-align: right; }
+
+/* line 262, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorebox_info {
+  position: relative;
+  width: 360px;
+  font-size: 20px;
+  padding: 10px 10px 0 10px;
+  margin: 0 auto;
+  box-sizing: border-box; }
+  /* line 270, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #scorebox_info #game_type_info {
+    font-size: 10px; }
+  /* line 273, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #scorebox_info #stand_info {
+    font-size: 15px; }
+
+/* line 277, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorebox_info > div {
+  display: inline-block;
+  margin-left: 10px; }
+
+/* line 281, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #endlist {
+  padding-bottom: 60px; }
+
+/* line 284, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorelist_footer {
+  position: fixed;
+  bottom: -60px;
+  transition-property: bottom;
+  transition-delay: 0.3s;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.35, 1);
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+  border-top: 5px #c43030 solid; }
+  /* line 297, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #scorelist_footer div.x109 {
+    font-size: 17px;
+    display: block;
+    position: absolute;
+    bottom: 13px;
+    left: 10px; }
+  /* line 304, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #scorelist_footer div.totalscoreBox {
+    font-size: 17px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px; }
+    /* line 310, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel #scorelist_footer div.totalscoreBox span.totalscore {
+      font-size: 35px;
+      display: inline-block;
+      width: 100px;
+      height: 40px;
+      background: #333333;
+      text-align: center;
+      line-height: 40px;
+      margin-left: 5px;
+      border-radius: 3px; }
+
+/* line 325, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #target_face {
+  background-color: #f0f0f0;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 58px;
+  height: 430px;
+  padding: 2px 0;
+  display: none; }
+  /* line 336, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #target_face #target_wrapper {
+    width: 360px;
+    height: 355px;
+    margin: 0 auto;
+    position: relative; }
+    /* line 342, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel #target_face #target_wrapper #target_svg #target_background {
+      width: 350px;
+      height: 350px;
+      position: absolute;
+      top: 0;
+      left: 5px;
+      background-position: left top;
+      background-size: cover;
+      border-radius: 10px;
+      background-color: #fff; }
+    /* line 353, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel #target_face #target_wrapper #target_svg svg {
+      border-radius: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 5px; }
+
+/* line 365, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #target_ui_wrapper {
+  display: table;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 4px;
+  table-layout: fixed;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-collapse: separate;
+  width: 350px; }
+  /* line 375, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #target_ui_wrapper .ons-icon--ion {
+    vertical-align: 0%; }
+  /* line 378, D:/work/cordovascore/www/css/main.scss */
+  #score_carousel #target_ui_wrapper #target_overlay_ui_wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 90px;
+    padding-top: 60px;
+    background-color: transparent;
+    box-sizing: border-box; }
+    /* line 387, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel #target_ui_wrapper #target_overlay_ui_wrapper #target_overlay_ui_base {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.8); }
+    /* line 394, D:/work/cordovascore/www/css/main.scss */
+    #score_carousel #target_ui_wrapper #target_overlay_ui_wrapper .button {
+      height: 50px;
+      width: 210px;
+      line-height: 40px;
+      margin: 0 auto;
+      font-size: 20px;
+      border-color: rgba(255, 255, 255, 0.4); }
+
+/* line 404, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #magnify {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: solid 1px #333333;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.13, 0.64, 0.25, 1) 0s; }
+
+/* line 421, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #magnicross {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+/* line 426, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #magnitarget {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+/* line 431, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #magnum {
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  font-size: 50px;
+  font-weight: bold;
+  color: #a0a0a0; }
+
+/* line 439, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #scorenote_wrapper {
+  height: 100%;
+  width: 360px;
+  margin: 0 auto;
+  overflow: auto; }
+
+/* line 445, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .button {
+  background: #333333;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 30px;
+  border: solid #000 1px;
+  text-decoration: none;
+  width: 113px;
+  height: 75px;
+  font-weight: 300;
+  font-size: 35px;
+  line-height: 180%;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  background-image: url(../img/but.png);
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden; }
+
+/* line 466, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .button_disable {
+  color: #373737; }
+
+/* line 469, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .button_hover:before {
+  content: "";
+  background: rgba(43, 123, 249, 0.46);
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+/* line 479, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #target_lock_btn {
+  position: absolute;
+  width: 50px;
+  height: 35px;
+  background-color: #fff;
+  top: 10px;
+  left: 15px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  line-height: 15px;
+  cursor: pointer;
+  background-image: url(../img/lock1.svg);
+  background-position: center;
+  background-size: 130%;
+  background-repeat: no-repeat; }
+
+/* line 498, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #target_close_btn {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  top: 10px;
+  right: 15px;
+  box-sizing: border-box;
+  border: solid #b4b4b4 1px;
+  border-radius: 7px;
+  line-height: 15px;
+  cursor: pointer;
+  background-image: url(../img/x.svg);
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat; }
+
+/* line 517, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .unelock {
+  background-color: #000;
+  color: #fff; }
+
+/* line 521, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .elock {
+  background-image: url(../img/but3.png);
+  color: #fff; }
+
+/* line 525, D:/work/cordovascore/www/css/main.scss */
+#score_carousel .lower_button {
+  background-image: url(../img/but2.png);
+  color: #fff; }
+
+/* line 529, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #direct_targetface {
+  background-image: url(../img/directhit.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: right;
+  margin: 5px 7px 0 0; }
+
+/* line 537, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #endLock {
+  margin: 5px 0 0 7px; }
+
+/* line 540, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #box_clear {
+  background-image: url(../img/but2.png); }
+
+/* line 546, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #card_wrapper .round_title {
+  padding: 10px;
+  color: #fff; }
+
+/* line 550, D:/work/cordovascore/www/css/main.scss */
+#score_carousel #card_wrapper .x10 {
+  padding: 10px 10px 10px 10px;
+  color: #fff;
+  border-bottom: 8px #c43030 double; }
+
+/* line 559, D:/work/cordovascore/www/css/main.scss */
+#aboutpage h2 {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 4px; }
+
+/* line 565, D:/work/cordovascore/www/css/main.scss */
+#aboutpage dl {
+  display: block;
+  width: 100%;
+  text-align: center; }
+  /* line 569, D:/work/cordovascore/www/css/main.scss */
+  #aboutpage dl dt {
+    font-weight: bold; }
+  /* line 572, D:/work/cordovascore/www/css/main.scss */
+  #aboutpage dl dd {
+    margin-bottom: 10px; }
+
+/* line 578, D:/work/cordovascore/www/css/main.scss */
+.userEquipments {
+  padding: 0; }
+  /* line 580, D:/work/cordovascore/www/css/main.scss */
+  .userEquipments .userEquipmentsRow {
+    transition-property: transform;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.42, 0, 0.35, 1); }
+    /* line 585, D:/work/cordovascore/www/css/main.scss */
+    .userEquipments .userEquipmentsRow.delleteMode {
+      transform: translateX(-50px); }
+    /* line 588, D:/work/cordovascore/www/css/main.scss */
+    .userEquipments .userEquipmentsRow .dellButton {
+      position: absolute;
+      right: -50px;
+      top: -1px;
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      padding: 0; }
+
+/* line 603, D:/work/cordovascore/www/css/main.scss */
+.gamelist-dialog .dialog {
+  height: 90%;
+  width: 80%;
+  border: 3px solid #454545; }
+  /* line 607, D:/work/cordovascore/www/css/main.scss */
+  .gamelist-dialog .dialog .ons-page-inner {
+    overflow: hidden; }
+  /* line 610, D:/work/cordovascore/www/css/main.scss */
+  .gamelist-dialog .dialog .dialoglist_wrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 60px;
+    overflow: scroll;
+    background-color: #fff; }
+
+/* line 621, D:/work/cordovascore/www/css/main.scss */
+#splash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000; }
+  /* line 628, D:/work/cordovascore/www/css/main.scss */
+  #splash:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    background-image: url(../img/splash.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation-delay: 1s;
+    animation-duration: 2s;
+    animation-name: splashanime;
+    animation-timing-function: ecubic-bezier(0.54, 0.01, 0.37, 1);
+    animation-fill-mode: both;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: splashanime;
+    -webkit-animation-timing-function: ecubic-bezier(0.54, 0.01, 0.37, 1);
+    -webkit-animation-fill-mode: both; }
+
+@keyframes splashanime {
+  0% {
+    background-size: 130%;
+    opacity: 1; }
+  50% {
+    background-size: 130%;
+    opacity: 1; }
+  100% {
+    background-size: 100%;
+    opacity: 0; } }
+
+@-webkit-keyframes splashanime {
+  0% {
+    background-size: 130%;
+    opacity: 1; }
+  50% {
+    background-size: 130%;
+    opacity: 1; }
+  100% {
+    background-size: 100%;
+    opacity: 0; } }
+
+/* line 681, D:/work/cordovascore/www/css/main.scss */
+.list_inner {
+  line-height: 1.2em;
+  padding: 13px 0; }
+
+/* line 686, D:/work/cordovascore/www/css/main.scss */
+.score_wrapper {
+  height: 100%;
+  width: 100%; }
+
+/* line 691, D:/work/cordovascore/www/css/main.scss */
+.menu-list {
+  margin-top: 40px; }
+
+/*# sourceMappingURL=main.css.map */

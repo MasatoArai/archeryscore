@@ -1,0 +1,10 @@
+{
+    "jscodehints.detectedExclusions": [
+        "jquery.js",
+        "D:/work/cordovascore/www/slick/slick.min.js",
+        "D:/work/cordovascore/www/slick/slick.js",
+        "D:/work/cordovascore/www/js/storageCTRL.js",
+        "D:/work/cordovascore/www/js/score_main.js",
+        "D:/work/cordovascore/www/js/util.js"
+    ]
+}

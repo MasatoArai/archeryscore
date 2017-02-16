@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        @font-face {
+            font-family: "ionicon";
+            src: url(lib/onsen/css/ionicons/fonts/ionicons.woff)
+        }
+        
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000000;
+        }
+        
+        body {
+            background: #000;
+        }
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+        
+        #bottomuibase {
+            font-family: ionicon;
+            position: absolute;
+            height: 70px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+        }
+        
+        #bottomuibase2 {
+            font-family: ionicon;
+            position: absolute;
+            height: 70px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1002;
+            display:none;
+        }
+        
+        #retake_base {
+            position: absolute;
+            margin: 5px auto;
+            top: 0;
+            right: 20px;
+            width: 80px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            overflow: hidden;
+            color: #fff;
+        }
+        #waku_base {
+            position: absolute;
+            margin: 5px auto;
+            top: 0;
+            left: 20px;
+            width: 80px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            overflow: hidden;
+            color: #fff;
+        }
+        
+        #close_base {
+            position: relative;
+            margin: 5px auto;
+            width: 80px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+        }
+        
+        #crop_base {
+            position: relative;
+            margin: 18px auto 0 auto;
+            width: 90%;
+            height: 50px;
+            background-color: #333;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+        }
+        
+        #stage {
+            position: absolute;
+            top: 0;
+            left: ;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+    </style>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/d3.min.js" charset="utf-8"></script>
+    <!--<script src = "js/html2canvas.js"></script>-->
+    <script src="js/photview.js" charset="utf-8">
+    </script>
+</head>
+
+<body>
+    <div id="stage">
+        <div style="color:#fff;position:absolute;top:0;left:0;height:100%;width:100%;z-index:1000" id="waku">
+        </div>
+        <!--<img src="img/test.jpg" id="targetimg">-->
+    </div>
+    <div id="bottomuibase">
+        <div id="close_base">
+            <a href="javascript:parent.scoreCTRL.hideReferencePhoto()">
+                &#xf12a;
+            </a>
+        </div>
+        <div id="retake_base">
+            &#xf2d3;
+            <input type="file" accept="image/*;capture=camera" id="incameraimage" style="position:absolute;top:0;left:-13px;zoom:3;opacity:0">
+        </div>
+        <div id="waku_base">
+            <a href = "javascript:toggleWaku()">
+                &#xf3c1;
+            </a>
+        </div>
+    </div>
+    <div id="bottomuibase2">
+        <div id="crop_base">
+            <a href="javascript:cropDo()">
+                &#xf41f;
+            </a>
+        </div>
+    </div>
+    <div id="progres" style="
+    position: absolute;
+    display:none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    background-image: url(img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center;">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+#score_carousel #target_face {
+    background-color: #232323
+}
+
+.navigation-bar{
+
+    background: none;
+    background-image: url(../img/pinstriped_suit.png);
+    /* background-repeat: repeat; */
+    background-size: 80%;
+    border-bottom: 5px #c43030 solid;
+    padding-top: 11px;
+}
+.navigation-bar__left{
+    line-height: 44px;
+    padding-left: 10px;
+}
+.page__background {
+    background-color: #7b7272;
+}
+.baselist .list__item {
+    color: #fff;
+    background: #6b6b6b;
+    background-image: url(../img/listb.png);
+    background-size: 100% 100%;
+    word-wrap:break-word;
+}
+.list__item--chevron{
+    color: #fff;
+    background: #6b6b6b;
+    background-image: url(../img/listb.png);
+    background-size: 100% 100%;
+}
+.baselist .list__item.list__item--chevron:active{
+    background: #343434;
+}
+.baselist .list__item--chevron:before {
+    color: #ffffff;
+}
+.baselist .list__item--chevron:active:before {
+    color: #c43030;
+}
+
+.baselist .list__item.list__item--chevron.edit_btn:active{
+    background: #e56666;
+}
+
+.baselist ons-list-item.edit_btn{
+background-image: url(../img/listr.png);
+    background-size: 100% 100%;
+}
+
+.baselist ons-list-item.edit_btn:before {
+    color: #fff;
+}
+
+
+.dashedlist .list__item:not(:last-child){
+    //border-bottom: 1px dashed #D6D6D6;
+}
+.baselist .list__item:last-child{
+    border-bottom: 5px solid #c43030;
+}
+
+.list_righter{
+    padding-left: 10px;
+}
+.switch__input:checked + .switch__toggle {
+   background-color: #fff;
+}
+.switch__input:checked + .switch__toggle:before{
+   background-color: #e56666;
+}
+#game_detail .label {
+     border-right: double 5px #565656;
+}
+#gameconfigList ons-list-item.edit_btn{
+    margin-bottom: 10px;
+}
+
+#gameconfigList ons-list-item.blank{
+    background: none;
+    min-height: 30px;
+}
+#gameconfigList input.text-input{
+    width: 100%;
+    margin: 10px auto;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+}
+#gameconfigList textarea.textarea{
+    width: 100%;
+    margin: 10px auto;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+}}
+
+#aboutpage{
+    color: #fff;
+}
+#aboutpage .page__background{
+    background-image: url(../img/splash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#aboutpage .page__content{
+    background-color: rgba(0,0,0,0.5)!important;
+}
+#aboutpage h2{
+    color:#fff;
+        border-bottom-color: #c43030
+    }
+#aboutpage dl{
+    color:#fff;
+}
+
+.sliders{
+    width: 300px;
+    /* height: 10px; */
+    margin: 0 auto 20px auto;
+}
+.noUi-target{
+    border: solid 1px rgba(255,255,255,1);
+}
+.noUi-background {
+    background-color: rgba(0,0,0,0);
+}
+.noUi-horizontal .noUi-handle {
+    width: 50px;
+    height: 40px;
+    left: -25px;
+    top: -11px;
+    border-radius: 5px;
+}
+.slider_endnum{
+    width: 80px;
+    height: 50px;
+    font-size: 50px;
+    font-weight: 100;
+    line-height: 50px;
+    color: #a3a3a3;
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    right: 5px;
+}
+.userEquipments .userEquipmentsRow {
+    background-color: #727272;
+    border-bottom: 1px solid #464646;
+    border-top: 1px solid #A7A7A7;
+}
+.userEquipments .userEquipmentsRow .dellButton{
+    background-color: #C43030;
+    border-left: 1px solid #B27575;
+    border-top: 1px solid #E2B0B0;
+    border-bottom: 1px solid #823A3A;
+}
+.radio-button__checkmark {
+    margin-left: 10px;
+}
+.radio-button__checkmark:after{
+        content: '\f375';
+    font-family: "Ionicons";
+    font-size: 25px;
+    position: absolute;
+    transform: translate(-46%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+}
+.button {
+    background-color:#C43030;
+    border-radius: 0;
+}
+.text-input--transparent {
+    color: #e5e5e5;
+}
+
+.text-input:focus{
+    background-color:#fff;
+    color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.textbox_standard {
+    width: 100%;
+    font-size: 20px;
+}
+.textarea--transparent{
+    color: #e5e5e5;
+}
+.textarea{
+    width: 100%;
+    font-size: 20px;
+    height: 80px;
+}
+.textarea:focus{
+    background-color:#fff;
+    color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
